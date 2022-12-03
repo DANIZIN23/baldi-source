@@ -26,7 +26,8 @@ class OptionsMenu extends MusicBeatState
 
 	var options:Array<OptionCategory> = [
 		new OptionCategory("Gameplay", [
-			new DFJKOption(controls),
+	   new AndroidControls(),
+	   new DFJKOption(controls),
 			new DownscrollOption("Change the layout of the strumline."),
 			new GhostTapOption("Ghost Tapping is when you tap a direction and it doesn't give you a miss."),
 			new Judgement("Customize your Hit Timings (LEFT or RIGHT)"),
@@ -114,6 +115,10 @@ class OptionsMenu extends MusicBeatState
 		FlxTween.tween(versionShit,{y: FlxG.height - 18},2,{ease: FlxEase.elasticInOut});
 		FlxTween.tween(blackBorder,{y: FlxG.height - 18},2, {ease: FlxEase.elasticInOut});
 
+		#if android
+		addVirtualPad(FULL, A_B);
+		#end
+
 		super.create();
 	}
 
@@ -162,9 +167,9 @@ class OptionsMenu extends MusicBeatState
 				}
 			}
 			
-			if (FlxG.keys.justPressed.UP)
+			if (controls.UP_P)
 				changeSelection(-1);
-			if (FlxG.keys.justPressed.DOWN)
+			if (controls.DOWN_P)
 				changeSelection(1);
 			
 			if (isCat)
