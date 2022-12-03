@@ -1715,10 +1715,10 @@ class PlayState extends MusicBeatState
 				var member = PlayState.strumLineNotes.members[i];
 				var theValue = Note.swagWidth * (i % 4);
 				if (i >= 4) {
-					luaModchart.setVar("defaultStrum" + i + "X", 50 + theValue);
+					// luaModchart.setVar("defaultStrum" + i + "X", 50 + theValue);
 					FlxTween.tween(member, {x: 50 + theValue}, 1, {ease: FlxEase.linear});
 				} else {
-					luaModchart.setVar("defaultStrum" + i + "X", (50 + (FlxG.width / 2)) + theValue);
+					// luaModchart.setVar("defaultStrum" + i + "X", (50 + (FlxG.width / 2)) + theValue);
 					FlxTween.tween(member, {x: (50 + (FlxG.width / 2)) + theValue}, 1, {ease: FlxEase.linear});
 				}
 			}
@@ -1748,10 +1748,10 @@ class PlayState extends MusicBeatState
 				var member = PlayState.strumLineNotes.members[i];
 				var theValue = Note.swagWidth * (i % 4);
 				if (i <= 3) {
-					luaModchart.setVar("defaultStrum" + i + "X", 50 + theValue);
+					// luaModchart.setVar("defaultStrum" + i + "X", 50 + theValue);
 					FlxTween.tween(member, {x: 50 + theValue}, 1, {ease: FlxEase.linear});
 				} else {
-					luaModchart.setVar("defaultStrum" + i + "X", (50 + (FlxG.width / 2)) + theValue);
+					// luaModchart.setVar("defaultStrum" + i + "X", (50 + (FlxG.width / 2)) + theValue);
 					FlxTween.tween(member, {x: (50 + (FlxG.width / 2)) + theValue}, 1, {ease: FlxEase.linear});
 				}
 			}
@@ -3767,57 +3767,27 @@ class PlayState extends MusicBeatState
 
 			public function backgroundVideo(source:String) // for background videos
 				{
-					#if cpp
-					useVideo = true;
+					
 			
 					FlxG.stage.window.onFocusOut.add(focusOut);
 					FlxG.stage.window.onFocusIn.add(focusIn);
 
-					var ourSource:String = "assets/videos/daWeirdVid/dontDelete.webm";
-					var str1:String = "WEBM SHIT"; 
-					webmHandler = new WebmHandler();
-					webmHandler.source(ourSource);
-					webmHandler.makePlayer();
-					webmHandler.webm.name = str1;
-			
-					GlobalVideo.setWebm(webmHandler);
-
-					GlobalVideo.get().source(source);
-					GlobalVideo.get().clearPause();
-					if (GlobalVideo.isWebm)
-					{
-						GlobalVideo.get().updatePlayer();
-					}
-					GlobalVideo.get().show();
-			
-					if (GlobalVideo.isWebm)
-					{
-						GlobalVideo.get().restart();
-					} else {
-						GlobalVideo.get().play();
-					}
 					
-					var data = webmHandler.webm.bitmapData;
-			
-					videoSprite = new FlxSprite(-470,-30).loadGraphic(data);
-			
-					videoSprite.setGraphicSize(Std.int(videoSprite.width * 1.2));
+					
+
+					
 			
 					remove(gf);
 					remove(boyfriend);
 					remove(dad);
-					add(videoSprite);
+					
 					add(gf);
 					add(boyfriend);
 					add(dad);
 			
 					trace('poggers');
 			
-					if (!songStarted)
-						webmHandler.pause();
-					else
-						webmHandler.resume();
-					#end
+					
 				}
 
 	function noteMiss(direction:Int = 1, daNote:Note):Void
